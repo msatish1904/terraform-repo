@@ -5,6 +5,17 @@ provider "aws" {
     region = "${var.aws_region}"
 }
 
+terraform {
+  required_version = "<= 1.3.14" #Forcing which version of Terraform needs to be used
+  required_providers {
+    aws = {
+      version = "<= 5.0.0" #Forcing which version of plugin needs to be used.
+      source = "hashicorp/aws"
+    }
+  }
+}
+
+
 resource "aws_vpc" "default" {
     cidr_block = "${var.vpc_cidr}"
     enable_dns_hostnames = true
@@ -30,6 +41,27 @@ resource "aws_subnet" "subnet1-public" {
     tags = {
         Name = "${var.public_subnet1_name}"
     }
+}
+
+resource "aws_subnet" "subnet2-public" {
+    vpc_id = "${aws_vpc.default.id}"
+    cidr_block = "${var.public_subnet2_cidr}"
+    availability_zone = "us-east-1b"
+
+    tags = {
+        Name = "${var.public_subnet2_name}"
+    }
+}
+
+resource "aws_subnet" "subnet3-public" {
+    vpc_id = "${aws_vpc.default.id}"
+    cidr_block = "${var.public_subnet3_cidr}"
+    availability_zone = "us-east-1c"
+
+    tags = {
+        Name = "${var.public_subnet3_name}"
+    }
+	
 }
 
 
