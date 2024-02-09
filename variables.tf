@@ -32,6 +32,6 @@ variable "instance_type" {
     prod = "t2.medium"
     }
 }
-variable "environment" 
+variable "environment1" 
 { default = "qa" }
 
