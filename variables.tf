@@ -24,7 +24,7 @@ variable "azs" {
   description = "Run the EC2 Instances in these Availability Zones"
   default = ["us-east-1a"]
 }
-variable "environment" { default = "test" }
+variable "environment" { default = "prod" }
 variable "instance_type" {
   default = {
     dev = "t2.micro"
