@@ -32,4 +32,6 @@ variable "instance_type" {
     prod = "t2.medium"
     }
 }
+variable "environment" 
+{ default = "qa" }
 
